@@ -199,16 +199,16 @@ Module.register("newsfeed",{
                 var qrCode = document.createElement("div");
                 new QRCode(qrCode, {
                     text: typeof this.newsItems[this.activeItem].url === "string" ? this.newsItems[this.activeItem].url : this.newsItems[this.activeItem].url.href,
-                    width: 150,
-                    height: 150,
-                    colorDark: "#fff",
+                    width: 120,
+                    height: 120,
+                    colorDark: "#cccccc",
                     colorLight: "#000",
-                    correctLevel: QRCode.CorrectLevel.H
+                    correctLevel: QRCode.CorrectLevel.M
                 });
 
-                /* const qrCodeImage = document.createElement("div");
-                 qrCodeImage.classList.add('qrcode_image');
-                 qrCodeImage.appendChild(qrCode);*/
+                const qrCodeImage = document.createElement("div");
+                qrCodeImage.classList.add('qrcode_image');
+                qrCodeImage.appendChild(qrCode);
                 wrapper.appendChild(qrCode);
             }
 
