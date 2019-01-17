@@ -44,7 +44,7 @@ Module.register("newsfeed",{
 
 	// Define required scripts.
 	getScripts: function() {
-		return ["moment.js"];
+		return ["moment.js", "qrcode.min.js"];
 	},
 
 	// Define required translations.
@@ -198,7 +198,7 @@ Module.register("newsfeed",{
             if (this.config.showQRCode) {
                 var qrCode = document.createElement("div");
                 new QRCode(qrCode, {
-                    text: typeof this.newsItems[this.activeItem].url  === "string" ? this.newsItems[this.activeItem].url : this.newsItems[this.activeItem].url.href,
+                    text: typeof this.newsItems[this.activeItem].url === "string" ? this.newsItems[this.activeItem].url : this.newsItems[this.activeItem].url.href,
                     width: 150,
                     height: 150,
                     colorDark: "#fff",
@@ -206,9 +206,9 @@ Module.register("newsfeed",{
                     correctLevel: QRCode.CorrectLevel.H
                 });
 
-               /* const qrCodeImage = document.createElement("div");
-                qrCodeImage.classList.add('qrcode_image');
-                qrCodeImage.appendChild(qrCode);*/
+                /* const qrCodeImage = document.createElement("div");
+                 qrCodeImage.classList.add('qrcode_image');
+                 qrCodeImage.appendChild(qrCode);*/
                 wrapper.appendChild(qrCode);
             }
 
