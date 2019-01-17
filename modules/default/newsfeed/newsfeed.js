@@ -21,6 +21,7 @@ Module.register("newsfeed",{
 		showSourceTitle: true,
 		showPublishDate: true,
 		showDescription: false,
+		showQRCode: true,
 		wrapTitle: true,
 		wrapDescription: true,
 		truncDescription: true,
@@ -193,6 +194,23 @@ Module.register("newsfeed",{
 				fullArticle.style.zIndex = 1;
 				wrapper.appendChild(fullArticle);
 			}
+
+            if (this.config.showQRCode) {
+                var qrCode = document.createElement("div");
+                new QRCode(qrCode, {
+                    text: typeof this.newsItems[this.activeItem].url  === "string" ? this.newsItems[this.activeItem].url : this.newsItems[this.activeItem].url.href,
+                    width: 150,
+                    height: 150,
+                    colorDark: "#fff",
+                    colorLight: "#000",
+                    correctLevel: QRCode.CorrectLevel.H
+                });
+
+               /* const qrCodeImage = document.createElement("div");
+                qrCodeImage.classList.add('qrcode_image');
+                qrCodeImage.appendChild(qrCode);*/
+                wrapper.appendChild(qrCode);
+            }
 
 			if (this.config.hideLoading) {
 				this.show();
